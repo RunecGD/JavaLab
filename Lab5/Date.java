@@ -2,21 +2,15 @@ package Labs.Lab5;
 
 public class Date {
 
-    private int day;   // День
-    private int month; // Месяц
-    private int year;  // Год
-
-    // Параметризованный конструктор
-    public Date(int day, int month, int year) {
+    private int day;       private int month;     private int year;  
+        public Date(int day, int month, int year) {
         setDay(day);
         setMonth(month);
         setYear(year);
     }
 
-    // Конструктор по умолчанию
-    public Date() {
-        this(1, 1, 2000); // Инициализация значениями по умолчанию
-    }
+        public Date() {
+        this(1, 1, 2000);     }
 
     public int getDay() {
         return day;
@@ -45,16 +39,13 @@ public class Date {
     }
 
     public void setYear(int year) {
-        this.year = year; // Год может быть любым положительным значением
-    }
+        this.year = year;     }
 
-    // Метод для проверки, является ли год високосным
-    public boolean isLeapYear() {
+        public boolean isLeapYear() {
         return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
     }
 
-    // Метод для увеличения даты на заданное количество дней
-    public void addDays(int days) {
+        public void addDays(int days) {
         this.day += days;
         while (this.day > daysInMonth(month, year)) {
             this.day -= daysInMonth(month, year);
@@ -66,8 +57,7 @@ public class Date {
         }
     }
 
-    // Метод для получения количества дней в месяце
-    private int daysInMonth(int month, int year) {
+        private int daysInMonth(int month, int year) {
         switch (month) {
             case 1: case 3: case 5: case 7: case 8: case 10: case 12:
                 return 31;

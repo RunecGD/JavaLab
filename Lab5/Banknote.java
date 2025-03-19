@@ -2,19 +2,12 @@ package Labs.Lab5;
 
 public class Banknote {
 
-    private int denomination; // Номинал купюры
-    private int quantity;     // Количество купюр
+    private int denomination;     private int quantity;     
+        public Banknote(int denomination, int quantity) {
+        setDenomination(denomination);         setQuantity(quantity);     }
 
-    // Параметризованный конструктор
-    public Banknote(int denomination, int quantity) {
-        setDenomination(denomination); // Используем сеттер для проверки
-        setQuantity(quantity); // Используем сеттер для проверки
-    }
-
-    // Конструктор по умолчанию
-    public Banknote() {
-        this(0, 0); // Инициализация значениями по умолчанию
-    }
+        public Banknote() {
+        this(0, 0);     }
 
     public int getDenomination() {
         return denomination;
@@ -51,8 +44,7 @@ public class Banknote {
     }
 
     public int calculateTotal() {
-        return denomination * quantity; // Вычисляем общую сумму купюр
-    }
+        return denomination * quantity;     }
 
     @Override
     public boolean equals(Object obj) {
