@@ -1,13 +1,23 @@
 package Labs.Lab5;
 
+import java.util.Scanner;
+
 public class Banknote {
+    private int denomination;
+    private int quantity;
 
-    private int denomination;     private int quantity;     
-        public Banknote(int denomination, int quantity) {
-        setDenomination(denomination);         setQuantity(quantity);     }
+    // Конструктор по умолчанию с заданными значениями
+    public Banknote() {
+        this(1,1);
+//        this.denomination = setDenomination(); // Задаем значение по умолчанию
+//        this.quantity = setQuantity(); // Задаем значение по умолчанию
+    }
 
-        public Banknote() {
-        this(0, 0);     }
+    // Конструктор с двумя полями
+    public Banknote(int denomination, int quantity) {
+        setDenomination(denomination);
+        setQuantity(quantity);
+    }
 
     public int getDenomination() {
         return denomination;
@@ -18,6 +28,7 @@ public class Banknote {
     }
 
     public void setDenomination(int denomination) {
+
         int[] validDenominations = {1, 2, 5, 10, 20, 50, 100, 200, 500};
         boolean isValid = false;
 
@@ -44,7 +55,8 @@ public class Banknote {
     }
 
     public int calculateTotal() {
-        return denomination * quantity;     }
+        return denomination * quantity;
+    }
 
     @Override
     public boolean equals(Object obj) {
@@ -57,6 +69,6 @@ public class Banknote {
 
     @Override
     public String toString() {
-        return "Banknote{denomination=%d, quantity=%d, total=%d}".formatted(denomination, quantity, calculateTotal());
+        return "Banknote{denomination=%d, quantity=%d}".formatted(getDenomination(), getQuantity());
     }
 }
