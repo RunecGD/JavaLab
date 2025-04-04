@@ -15,7 +15,9 @@ public class Main {
             System.out.println("5. Разблокировать все двери");
             System.out.println("6. Открыть двери");
             System.out.println("7. Закрыть двери");
-            System.out.println("8. Выход");
+            System.out.println("8. Закрыть окна");
+            System.out.println("9. Открыть окна");
+            System.out.println("10. Выход");
 
             System.out.print("Выберите действие: ");
             int choice = scanner.nextInt();
@@ -23,10 +25,10 @@ public class Main {
 
             switch (choice) {
                 case 1:
-                    addWindow();
+                    createWindow();
                     break;
                 case 2:
-                    addDoor();
+                    createDoor();
                     break;
                 case 3:
                     house.displayInfo();
@@ -36,15 +38,26 @@ public class Main {
                     System.out.println("Все двери заблокированы.");
                     break;
                 case 5:
-                    house.unlockallDoors();
+                    house.unlockAllDoors();
                     System.out.println("Все двери разблокированы.");
+                    break;
                 case 6:
                     house.openAllDoors();
                     System.out.println("Все двери открыты");
+                    break;
                 case 7:
                     house.closeAllDoors();
                     System.out.println("Все двери закрыты");
+                    break;
                 case 8:
+                    house.closeAllWindows();
+                    System.out.println("Все окна закрыты.");
+                    break;
+                case 9:
+                    house.openAllWindows();
+                    System.out.println("Все окна открыты.");
+                    break;
+                case 10:
                     System.out.println("Выход из программы.");
                     return;
                 default:
@@ -53,13 +66,13 @@ public class Main {
         }
     }
 
-    private static void addWindow() {
+    private static void createWindow() {
         Window window = new Window();
         house.addWindow(window);
         System.out.println("Добавлено новое окно.");
     }
 
-    private static void addDoor() {
+    private static void createDoor() {
         Door door = new Door();
         house.addDoor(door);
         System.out.println("Добавлена новая дверь.");

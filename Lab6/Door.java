@@ -36,6 +36,6 @@ class Door {
 
     @Override
     public String toString() {
-        return "Дверь " + state.toString().toLowerCase();
+        return "Дверь " + getState().toString().toLowerCase();
     }
 }
