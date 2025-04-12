@@ -5,11 +5,11 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         PublicTransport[] transports = new PublicTransport[5];
-        transports[0] = new Bus("1A", 50, false, true);
-        transports[1] = new Trolleybus("2B", 60, true, 600);
-        transports[2] = new Tram("3C", 80, true, 3);
-        transports[3] = new Bus("4D", 55, false, false);
-        transports[4] = new Tram("5E", 90, true, 4);
+        transports[0] = new Bus("3", 50, false, false);
+        transports[1] = new Trolleybus("1", 60, true, 600);
+        transports[2] = new Tram("12", 80, true, 3);
+        transports[3] = new Bus("28", 55, false, false);
+        transports[4] = new Tram("13", 90, true, 4);
 
         Scanner scanner = new Scanner(System.in);
         int choice;

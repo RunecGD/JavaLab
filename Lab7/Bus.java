@@ -5,10 +5,10 @@ public class Bus extends PublicTransport {
 
     public Bus(String routeNumber, int capacity, boolean isElectric, boolean hasWiFi) {
         super(routeNumber, capacity, isElectric);
-        this.hasWiFi = hasWiFi;
+        setHasWiFi(hasWiFi);
     }
 
-    public boolean hasWiFi() {
+    public boolean getHasWiFi() {
         return hasWiFi;
     }
 
@@ -23,6 +23,6 @@ public class Bus extends PublicTransport {
 
     @Override
     public String toString() {
-        return "Автобус — " + super.toString() + ", WiFi: " + hasWiFi;
+        return "Автобус — " + super.toString() + ", WiFi: " + getHasWiFi();
     }
 }

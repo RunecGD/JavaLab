@@ -8,9 +8,9 @@ public abstract class PublicTransport {
     private boolean isElectric;
 
     public PublicTransport(String routeNumber, int capacity, boolean isElectric) {
-        this.routeNumber = routeNumber;
-        this.capacity = capacity;
-        this.isElectric = isElectric;
+        setRouteNumber(routeNumber);
+        setCapacity(capacity);
+        setElectric(isElectric);
         instanceCount++;
     }
 

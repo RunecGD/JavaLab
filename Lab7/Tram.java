@@ -5,7 +5,7 @@ public class Tram extends PublicTransport {
 
     public Tram(String routeNumber, int capacity, boolean isElectric, int numberOfWagons) {
         super(routeNumber, capacity, isElectric);
-        this.numberOfWagons = numberOfWagons;
+        setNumberOfWagons(numberOfWagons);
     }
 
     public int getNumberOfWagons() {
@@ -23,7 +23,7 @@ public class Tram extends PublicTransport {
 
     @Override
     public String toString() {
-        return "Трамвай — " + super.toString() + ", Вагонов: " + numberOfWagons;
+        return "Трамвай — " + super.toString() + ", Вагонов: " + getNumberOfWagons();
     }
 }
 

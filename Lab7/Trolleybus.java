@@ -5,7 +5,7 @@ public class Trolleybus extends PublicTransport {
 
     public Trolleybus(String routeNumber, int capacity, boolean isElectric, int voltage) {
         super(routeNumber, capacity, isElectric);
-        this.voltage = voltage;
+         setVoltage(voltage);
     }
 
     public int getVoltage() {
@@ -23,7 +23,7 @@ public class Trolleybus extends PublicTransport {
 
     @Override
     public String toString() {
-        return "Троллейбус — " + super.toString() + ", Напряжение: " + voltage + "В";
+        return "Троллейбус — " + super.toString() + ", Напряжение: " + getVoltage() + "В";
     }
 }
 
