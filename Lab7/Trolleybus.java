@@ -3,9 +3,9 @@ package Labs.Lab7;
 public class Trolleybus extends PublicTransport {
     private int voltage;
 
-    public Trolleybus(String routeNumber, int capacity, boolean isElectric, int voltage) {
-        super(routeNumber, capacity, isElectric);
-         setVoltage(voltage);
+    public Trolleybus() {
+        super();
+        this.voltage = 0; // Значение по умолчанию
     }
 
     public int getVoltage() {

@@ -7,10 +7,10 @@ public abstract class PublicTransport {
     private int capacity;
     private boolean isElectric;
 
-    public PublicTransport(String routeNumber, int capacity, boolean isElectric) {
-        setRouteNumber(routeNumber);
-        setCapacity(capacity);
-        setElectric(isElectric);
+    public PublicTransport() {
+        this.routeNumber = "Не задан";
+        this.capacity = 0;
+        this.isElectric = false;
         instanceCount++;
     }
 
@@ -47,8 +47,7 @@ public abstract class PublicTransport {
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
-        if (!(obj instanceof PublicTransport)) return false;
-        PublicTransport other = (PublicTransport) obj;
+        if (!(obj instanceof PublicTransport other)) return false;
         return this.routeNumber.equals(other.routeNumber) &&
                 this.capacity == other.capacity &&
                 this.isElectric == other.isElectric;

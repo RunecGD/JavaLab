@@ -1,19 +1,19 @@
 package Labs.Lab7;
 
 public class Bus extends PublicTransport {
-    private boolean hasWiFi;
+    private boolean hasCharge;
 
-    public Bus(String routeNumber, int capacity, boolean isElectric, boolean hasWiFi) {
-        super(routeNumber, capacity, isElectric);
-        setHasWiFi(hasWiFi);
+    public Bus() {
+        super();
+        this.hasCharge = false; // Значение по умолчанию
     }
 
-    public boolean getHasWiFi() {
-        return hasWiFi;
+    public boolean getHasCharge() {
+        return hasCharge;
     }
 
-    public void setHasWiFi(boolean hasWiFi) {
-        this.hasWiFi = hasWiFi;
+    public void setHasCharge(boolean hasCharge) {
+        this.hasCharge = hasCharge;
     }
 
     @Override
@@ -23,6 +23,6 @@ public class Bus extends PublicTransport {
 
     @Override
     public String toString() {
-        return "Автобус — " + super.toString() + ", WiFi: " + getHasWiFi();
+        return "Автобус — " + super.toString() + ", Charge: " + getHasCharge();
     }
 }

@@ -3,9 +3,9 @@ package Labs.Lab7;
 public class Tram extends PublicTransport {
     private int numberOfWagons;
 
-    public Tram(String routeNumber, int capacity, boolean isElectric, int numberOfWagons) {
-        super(routeNumber, capacity, isElectric);
-        setNumberOfWagons(numberOfWagons);
+    public Tram() {
+        super();
+        this.numberOfWagons = 0; // Значение по умолчанию
     }
 
     public int getNumberOfWagons() {
