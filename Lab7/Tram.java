@@ -1,5 +1,7 @@
 package Labs.Lab7;
 
+import java.util.Scanner;
+
 public class Tram extends PublicTransport {
     private int numberOfWagons;
 
@@ -15,7 +17,13 @@ public class Tram extends PublicTransport {
     public void setNumberOfWagons(int numberOfWagons) {
         this.numberOfWagons = numberOfWagons;
     }
+    public void set(Scanner scanner) {
+        System.out.print("Введите количество вагонов: ");
+        int numberOfWagons = scanner.nextInt();
+        setNumberOfWagons(numberOfWagons);
+        super.set(scanner);
 
+    }
     @Override
     public void move() {
         System.out.println("Трамвай едет по маршруту " + getRouteNumber());

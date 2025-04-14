@@ -90,60 +90,17 @@ public class Main {
     }
 
     private static void addNewTransport(Scanner scanner) {
-        System.out.print("Введите тип транспорта (Bus, Trolleybus, Tram): ");
-        String type = scanner.next();
-        PublicTransport transport = null;
-
-        if (type.equalsIgnoreCase("Bus")) {
-            transport = new Bus();
-            System.out.print("Введите номер маршрута: ");
-            String routeNumber = scanner.next();
-            System.out.print("Введите вместимость: ");
-            int capacity = scanner.nextInt();
-            System.out.print("Электрический? (true/false): ");
-            boolean isElectric = scanner.nextBoolean();
-            System.out.print("Есть заряд? (true/false): ");
-            boolean hasCharge = scanner.nextBoolean();
-            transport.setRouteNumber(routeNumber);
-            transport.setCapacity(capacity);
-            transport.setElectric(isElectric);
-            ((Bus) transport).setHasCharge(hasCharge);
-
-        } else if (type.equalsIgnoreCase("Trolleybus")) {
-            transport = new Trolleybus();
-            System.out.print("Введите номер маршрута: ");
-            String routeNumber = scanner.next();
-            System.out.print("Введите вместимость: ");
-            int capacity = scanner.nextInt();
-            System.out.print("Электрический? (true/false): ");
-            boolean isElectric = scanner.nextBoolean();
-            System.out.print("Введите напряжение: ");
-            int voltage = scanner.nextInt();
-            transport.setRouteNumber(routeNumber);
-            transport.setCapacity(capacity);
-            transport.setElectric(isElectric);
-            ((Trolleybus) transport).setVoltage(voltage);
-
-        } else if (type.equalsIgnoreCase("Tram")) {
-            transport = new Tram();
-            System.out.print("Введите номер маршрута: ");
-            String routeNumber = scanner.next();
-            System.out.print("Введите вместимость: ");
-            int capacity = scanner.nextInt();
-            System.out.print("Электрический? (true/false): ");
-            boolean isElectric = scanner.nextBoolean();
-            System.out.print("Введите количество вагонов: ");
-            int numberOfWagons = scanner.nextInt();
-            transport.setRouteNumber(routeNumber);
-            transport.setCapacity(capacity);
-            transport.setElectric(isElectric);
-            ((Tram) transport).setNumberOfWagons(numberOfWagons);
-        }
-
-        if (transport != null) {
-            addTransport(transport);
-            System.out.println("Транспортное средство добавлено.");
-        }
+        System.out.print("Введите тип транспорта (1. Bus, 2. Trolleybus, 3. Tram): ");
+        int type = scanner.nextInt();
+        PublicTransport transport = switch (type) {
+            case 1 -> new Bus();
+            case 2 -> new Trolleybus();
+            case 3 -> new Tram();
+            default -> throw new IllegalStateException("Unexpected value: " + type);
+        };
+        transport.set(scanner);
+        addTransport(transport);
+        System.out.println("Транспортное средство добавлено.");
     }
 
     private static void removeTransport(Scanner scanner) {
@@ -165,39 +122,15 @@ public class Main {
         int index = scanner.nextInt();
         if (index >= 0 && index < count) {
             PublicTransport transport = transports[index];
-            System.out.print("Введите новый номер маршрута: ");
-            String routeNumber = scanner.next();
-            System.out.print("Введите новую вместимость: ");
-            int capacity = scanner.nextInt();
-            System.out.print("Электрический? (true/false): ");
-            boolean isElectric = scanner.nextBoolean();
 
             if (transport instanceof Bus) {
-                System.out.print("Есть зарядка? (true/false): ");
-                boolean hasCharge = scanner.nextBoolean();
-                transports[index] = new Bus();
-                transports[index].setRouteNumber(routeNumber);
-                transports[index].setCapacity(capacity);
-                transports[index].setElectric(isElectric);
-                ((Bus) transports[index]).setHasCharge(hasCharge);
+               transport.set(scanner);
 
             } else if (transport instanceof Trolleybus) {
-                System.out.print("Введите новое напряжение: ");
-                int voltage = scanner.nextInt();
-                transports[index] = new Trolleybus();
-                transports[index].setRouteNumber(routeNumber);
-                transports[index].setCapacity(capacity);
-                transports[index].setElectric(isElectric);
-                ((Trolleybus) transports[index]).setVoltage(voltage);
+               transport.set(scanner);
 
             } else if (transport instanceof Tram) {
-                System.out.print("Введите новое количество вагонов: ");
-                int numberOfWagons = scanner.nextInt();
-                transports[index] = new Tram();
-                transports[index].setRouteNumber(routeNumber);
-                transports[index].setCapacity(capacity);
-                transports[index].setElectric(isElectric);
-                ((Tram) transports[index]).setNumberOfWagons(numberOfWagons);
+                transport.set(scanner);
             }
 
             System.out.println("Транспортное средство изменено.");

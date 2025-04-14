@@ -1,5 +1,7 @@
 package Labs.Lab7;
 
+import java.util.Scanner;
+
 public abstract class PublicTransport {
     private static int instanceCount = 0;
 
@@ -8,9 +10,9 @@ public abstract class PublicTransport {
     private boolean isElectric;
 
     public PublicTransport() {
-        this.routeNumber = "Не задан";
-        this.capacity = 0;
-        this.isElectric = false;
+//        this.routeNumber = "Не задан";
+//        this.capacity = 0;
+//        this.isElectric = false;
         instanceCount++;
     }
 
@@ -44,6 +46,17 @@ public abstract class PublicTransport {
 
     public abstract void move();
 
+    public void set(Scanner scanner){
+        System.out.print("Введите номер маршрута: ");
+        String routeNumber = scanner.next();
+        System.out.print("Введите вместимость: ");
+        int capacity = scanner.nextInt();
+        System.out.print("Электрический? (true/false): ");
+        boolean isElectric = scanner.nextBoolean();
+        setRouteNumber(routeNumber);
+        setCapacity(capacity);
+        setElectric(isElectric);
+    }
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
