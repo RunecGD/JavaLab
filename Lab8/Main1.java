@@ -1,5 +1,8 @@
+package Labs.Lab8;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 
 public class Main1 {
     public static void main(String[] args) {
@@ -16,7 +19,6 @@ public class Main1 {
         String[] words = text.substring(0, text.length() - 1).split(",\\s*");
         System.out.println("\nНайденные слова:");
 
-        // Используем регулярное выражение для поиска
         Pattern pattern = Pattern.compile("\\b\\w+\\b");
 
         for (int i = 0; i < words.length; i++) {
@@ -26,7 +28,6 @@ public class Main1 {
                 boolean allBeforeSmaller = true;
                 boolean allAfterLarger = true;
 
-                // Проверка слов перед текущим
                 for (int j = 0; j < i; j++) {
                     if (words[j].compareTo(currentWord) >= 0) {
                         allBeforeSmaller = false;

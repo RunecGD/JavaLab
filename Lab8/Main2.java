@@ -12,7 +12,6 @@ public class Main2 {
             Чувствуется холод в доле.
             """;
 
-        // Убираем символы новой строки и разбиваем текст на слова
         String[] words = poem.replaceAll("[,.]", "").split("\\s+");
         List<String> vowelWords = new ArrayList<>();
 
