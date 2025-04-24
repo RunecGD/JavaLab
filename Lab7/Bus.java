@@ -15,7 +15,7 @@ public class Bus extends PublicTransport {
     }
     @Override
     public void set(Scanner scanner){
-        System.out.print("Есть заряд? (true/false): ");
+        System.out.print("Есть зарядка? (true/false): ");
         boolean hasCharge = scanner.nextBoolean();
         setHasCharge(hasCharge);
         super.set(scanner);

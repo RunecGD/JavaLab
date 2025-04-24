@@ -122,16 +122,7 @@ public class Main {
         int index = scanner.nextInt();
         if (index >= 0 && index < count) {
             PublicTransport transport = transports[index];
-
-            if (transport instanceof Bus) {
-               transport.set(scanner);
-
-            } else if (transport instanceof Trolleybus) {
-               transport.set(scanner);
-
-            } else if (transport instanceof Tram) {
                 transport.set(scanner);
-            }
 
             System.out.println("Транспортное средство изменено.");
         } else {

@@ -49,6 +49,7 @@ public abstract class PublicTransport {
     public void set(Scanner scanner){
         System.out.print("Введите номер маршрута: ");
         String routeNumber = scanner.next();
+
         System.out.print("Введите вместимость: ");
         int capacity = scanner.nextInt();
         System.out.print("Электрический? (true/false): ");
@@ -71,3 +72,4 @@ public abstract class PublicTransport {
         return "Маршрут: " + getRouteNumber() + ", Вместимость: " + getCapacity() + ", Электро: " + getIsElectric();
     }
 }
+
