@@ -22,27 +22,26 @@ public class Main1 {
 
         System.out.println("\nНайденные слова:");
 
-        List<String> wordsList = new ArrayList<>();
+        List<String> words = new ArrayList<>();
         while (matcher.find()) {
-            wordsList.add(matcher.group());
+            words.add(matcher.group());
         }
 
-        String[] words = wordsList.toArray(new String[0]);
 
-        for (int i = 0; i < words.length; i++) {
-            String currentWord = words[i];
+        for (int i = 0; i < words.size(); i++) {
+            String currentWord = words.get(i);
             boolean allBeforeSmaller = true;
             boolean allAfterLarger = true;
 
             for (int j = 0; j < i; j++) {
-                if (words[j].compareTo(currentWord) >= 0) {
+                if (words.get(j).compareTo(currentWord) >= 0) {
                     allBeforeSmaller = false;
                     break;
                 }
             }
 
-            for (int j = i + 1; j < words.length; j++) {
-                if (words[j].compareTo(currentWord) <= 0) {
+            for (int j = i + 1; j < words.size(); j++) {
+                if (words.get(j).compareTo(currentWord) <= 0) {
                     allAfterLarger = false;
                     break;
                 }
