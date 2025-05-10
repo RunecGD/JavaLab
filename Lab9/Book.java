@@ -59,6 +59,6 @@ public class Book {
 
     @Override
     public String toString() {
-        return title + " by " + author + " (" + pageCount + " pages)";
+        return getTitle() + " by " + getAuthor() + " (" + getPageCount() + " pages)";
     }
 }
