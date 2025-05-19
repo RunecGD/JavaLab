@@ -1,7 +1,5 @@
 
-import Labs.Lab11;
-import Labs.Lab11.ProcessTask;
-
+package Labs.Lab11;
 import java.util.LinkedList;
 import java.util.Queue;
 
