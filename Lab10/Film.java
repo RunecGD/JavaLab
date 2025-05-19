@@ -1,15 +1,14 @@
 package Labs.Lab10;
 
-import java.io.*;
-import java.util.*;
+import java.io.Serializable;
 
 class Film implements Serializable {
     private String title;
     private int episodes;
     private int duration;
-    private List<String> days;
+    private String days; // теперь это строка
 
-    public Film(String title, int episodes, int duration, List<String> days) {
+    public Film(String title, int episodes, int duration, String days) {
         this.title = title;
         this.episodes = episodes;
         this.duration = duration;
@@ -28,12 +27,13 @@ class Film implements Serializable {
         return duration;
     }
 
-    public List<String> getDays() {
+    public String getDays() {
         return days;
     }
 
     @Override
     public String toString() {
-        return "Фильм: " + title + ", Серий: " + episodes + ", Длительность: " + duration + " мин, Дни показа: " + days;
+        return "Фильм: " + getTitle() + ", Серий: " + getEpisodes() +
+                ", Длительность: " + getDuration() + " мин, Дни показа: [" + getDays() + "]";
     }
 }
