@@ -22,40 +22,57 @@ public class Cpu extends Thread {
 
     @Override
     public void run() {
-        while (!done1.get() || !done2.get() || !queue1.isEmpty() || !queue2.isEmpty() || currentTask != null) {
+        while (true) {
             ProcessTask taskToProcess = null;
+
             synchronized (lock) {
-                if (currentTask == null && !queue1.isEmpty()) {
-                    taskToProcess = queue1.poll();
-                    isIdle = false;
-                } else if (currentTask == null && queue1.isEmpty() && !queue2.isEmpty()) {
-                    taskToProcess = queue2.poll();
-                    isIdle = false;
-                } else if (currentTask != null) {
-                    taskToProcess = currentTask;
-                    currentTask = null;
-                } else {
-                    isIdle = true;
-                    try {
-                        lock.wait(100);
-                    } catch (InterruptedException ignored) {}
+                if (done1.get() && done2.get() && queue1.isEmpty() && queue2.isEmpty() && currentTask == null) {
+                    break; // Выход из цикла, если все завершено
                 }
             }
+            synchronized (lock) {
+
+                synchronized (queue1) {
+                    if (!queue1.isEmpty()) {
+                        taskToProcess = queue1.poll();
+                        isIdle = false;
+                    }
+                }
+            }
+            synchronized (lock) {
+                synchronized (queue2) {
+                    if (!queue2.isEmpty()) {
+                        taskToProcess = queue2.poll();
+                        isIdle = false;
+                    }
+                }
+            }
+
+            synchronized (lock) {
+                if (currentTask != null) {
+                    taskToProcess = currentTask;
+                    currentTask = null;
+                }
+            }
+
             if (taskToProcess != null) {
                 System.out.printf("Процессор обслуживает процесс %d из потока %d\n",
                         taskToProcess.id, taskToProcess.streamNumber);
                 try {
                     int serviceTime = randomInRange(minService, maxService);
                     Thread.sleep(serviceTime);
-                } catch (InterruptedException e) { e.printStackTrace(); }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 System.out.printf("Процесс %d из потока %d завершён (обслуживание %d мс)\n",
                         taskToProcess.id, taskToProcess.streamNumber, minService);
+                isIdle = true;
             }
         }
         System.out.println("Процессор завершил обслуживание всех процессов.");
     }
 
     private int randomInRange(int min, int max) {
-        return min + (int)((max - min) * Math.random());
+        return min + (int) ((max - min) * Math.random());
     }
 }

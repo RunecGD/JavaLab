@@ -7,6 +7,7 @@ public class CpuQueue {
     private final Queue<ProcessTask> queue = new LinkedList<>();
     private int maxSize = 0;
     private final String name;
+    public static final Object lock = new Object();
 
     public CpuQueue(String name) { this.name = name; }
 
@@ -14,7 +15,6 @@ public class CpuQueue {
         queue.add(task);
         if (queue.size() > maxSize) maxSize = queue.size();
         System.out.printf("Процесс %d добавлен в %s. Размер очереди: %d\n", task.id, name, queue.size());
-        notifyAll();
     }
 
     public synchronized ProcessTask poll() {

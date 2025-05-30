@@ -4,17 +4,16 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class CpuSimulation {
     public static void main(String[] args) throws InterruptedException {
-        // Начальные параметры
-        int numProcesses1 = 20; // Количество процессов для потока 1
-        int numProcesses2 = 20; // Количество процессов для потока 2
+        int numProcesses1 = 20;
+        int numProcesses2 = 20;
 
-        int genMin1 = 200; // Минимальный интервал генерации (мс) поток 1
-        int genMax1 = 350; // Максимальный интервал генерации (мс) поток 1
-        int genMin2 = 100; // Минимальный интервал генерации (мс) поток 2
-        int genMax2 = 200; // Максимальный интервал генерации (мс) поток 2
+        int genMin1 = 200;
+        int genMax1 = 350;
+        int genMin2 = 100;
+        int genMax2 = 200;
 
-        int cpuMin = 100; // Минимальное время обработки (мс)
-        int cpuMax = 300; // Максимальное время обработки (мс)
+        int cpuMin = 100;
+        int cpuMax = 300;
 
         CpuQueue queue1 = new CpuQueue("Очередь 1");
         CpuQueue queue2 = new CpuQueue("Очередь 2");

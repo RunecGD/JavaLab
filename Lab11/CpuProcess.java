@@ -30,16 +30,23 @@ public class CpuProcess extends Thread {
                 e.printStackTrace();
             }
             ProcessTask task = new ProcessTask(i, streamNumber);
+            boolean go=true;
             synchronized (Cpu.lock) {
                 if (Cpu.isIdle) {
                     Cpu.currentTask = task;
                     Cpu.isIdle = false;
+                    go = false;
                     System.out.printf(
-                            "Процесс %d из потока %d поступил напрямую на процессор (очередь пуста)\n",
+                            "Процесс %d из потока %d поступил напрямую на процессор ( )\n",
                             task.id, streamNumber);
-                    Cpu.lock.notifyAll();
-                } else {
+
+                }
+            }
+            if(!go) {
+                synchronized (queue) {
+
                     queue.add(task);
+
                 }
             }
         }
